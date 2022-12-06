@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Transparencia</title>
+{% endblock %}
+
+{% block body %}
+    <br>
+    <h1>Transparency Data for ASBL in Belgium </h1>
+    <br>
+    <h3>This is a list that automatically verifies if ASBL website contain transparency data and give the date of last publication of financial data.</h3>
+    <br>
+    <p>We use the CBE public search, Central Balance Sheet Office and web scraping tools to verify check data in real time.</p>
+    <br>
+    <p>More info on our github: https://github.com/wainaze/Transparencia</p>
+
+    {% for table in tables %}
+
+    {{ table|safe }}
+    
+    {% endfor %}
+
+{% endblock %} 
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#table').DataTable({
+        columns: [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          {searchable: false},
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},
+          null],
+      });
+    });
+  </script>
+{% endblock %}
