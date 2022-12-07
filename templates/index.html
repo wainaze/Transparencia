@@ -14,12 +14,15 @@
     <br>
     <p>More info on our github: https://github.com/wainaze/Transparencia</p>
 
+    <a href="/getfile" class="btn btn-primary" role="button">Download Full Excel</a>
+    <br>
+    <br>
     {% for table in tables %}
 
     {{ table|safe }}
     
     {% endfor %}
-
+    </table>  
 {% endblock %} 
 
 {% block scripts %}

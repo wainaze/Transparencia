@@ -27,5 +27,3 @@ def cbb_result(url):
         a = "Company number error"
     #print(a)   
     return a
-
-    #test git

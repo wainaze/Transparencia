@@ -1,8 +1,10 @@
-from flask import Flask, request, render_template, session, redirect
+from flask import Flask, request, render_template, session, redirect, send_file
 import numpy as np
 import pandas as pd
 from cbb_result import *
 from transp_url import *
+from io import BytesIO
+
 
 app = Flask(__name__)
 
@@ -49,13 +51,28 @@ df = df.astype({'transp_link':'string'})
 pd.set_option('display.max_colwidth', None)
 #df = df.style.format({'cbb_link': make_clickable})
 
+df_short= df.drop(['WEBSITE', 'bce_link', 'Autorite', 'TYPE', 'MANDATS', 'UNITES'], axis=1)
+
 #print (df)
 
 
-@app.route('/', methods=("POST", "GET"))
+@app.route('/')
 def html_table():
+    return render_template('index.html',  tables=[df_short.to_html( table_id = 'table', justify = "left", classes='table table-striped', header="true", render_links="True", escape="False")])
 
-    return render_template('index.html',  tables=[df.to_html( table_id = 'table', justify = "left", classes='table table-striped', header="true", render_links="True", escape="False")])
+
+@app.route("/getfile")
+def getPlotCSV():
+    output = BytesIO()
+    writer = pd.ExcelWriter(output, engine='xlsxwriter')
+    df.to_excel(writer, sheet_name='Sheet1')
+    writer.save()
+    output.seek(0)
+    return send_file(output, download_name='transparencia.xlsx', as_attachment=True)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)
+
+
+
+    
