@@ -69,6 +69,8 @@ def getPlotCSV():
     output.seek(0)
     return send_file(output, download_name='transparencia.xlsx', as_attachment=True)
 
+server = app.server
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
 
