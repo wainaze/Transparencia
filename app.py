@@ -8,7 +8,7 @@ from io import BytesIO
 
 app = Flask(__name__)
 
-df = pd.read_excel('test.xlsx', sheet_name='Sheet1')
+df = pd.read_excel('transparencia.xlsx', sheet_name='Sheet1')
 
 cbb_base = "https://consult.cbso.nbb.be/consult-enterprise/"
 bce_base = "https://kbopub.economie.fgov.be/kbopub/zoeknummerform.html?nummer="
@@ -54,7 +54,6 @@ pd.set_option('display.max_colwidth', None)
 df_short= df.drop(['WEBSITE', 'bce_link', 'Autorite', 'TYPE', 'MANDATS', 'UNITES'], axis=1)
 
 #print (df)
-
 
 @app.route('/')
 def html_table():

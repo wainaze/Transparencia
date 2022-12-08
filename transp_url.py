@@ -36,6 +36,7 @@ def transp_url(url):
         if link:
             #print("link found")
             a = link['href']
+            print(a)
             # join the URL if it's relative (not absolute link)
             a = urljoin(url, a)
             #parsed_href = urlparse(href)
@@ -50,7 +51,7 @@ def transp_url(url):
             link2 = soup.find("a", string=re.compile("Transpar"))
             if link2:
                 #print("link found")
-                a = link2['href']      
+                a = link2['href']     
                 # join the URL if it's relative (not absolute link)
                 a = urljoin(url, a)
                 #parsed_href = urlparse(href)
