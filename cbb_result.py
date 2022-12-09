@@ -39,5 +39,6 @@ def cbb_result(url):
         a = year.getText()
     else:
         a = "Company number error"
-    #print(a)    
+    
+    print(a)    
     return a
