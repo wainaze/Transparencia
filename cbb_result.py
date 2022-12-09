@@ -6,9 +6,10 @@ from selenium import webdriver
 #HTML signs for finding if the accounts is empty or full
 #class="block-results__empty ng-star-inserted" -- NO RESULTS
 #class="block-results__items ng-star-inserted" -- ACCOUNTS AVAILABLE
+#url = "https://consult.cbso.nbb.be/consult-enterprise/0424920376"
 
 def cbb_result(url):
-    driver = webdriver.Chrome('/usr/bin/chromedriver')
+    driver = webdriver.Chrome()
     #driver.maximize_window()
     driver.get(url)
 
@@ -25,5 +26,5 @@ def cbb_result(url):
         a = year.getText()
     else:
         a = "Company number error"
-    #print(a)   
+    #print(a)    
     return a
