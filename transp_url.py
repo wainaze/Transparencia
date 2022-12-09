@@ -36,7 +36,6 @@ def transp_url(url):
         if link:
             #print("link found")
             a = link['href']
-            print(a)
             # join the URL if it's relative (not absolute link)
             a = urljoin(url, a)
             #parsed_href = urlparse(href)
@@ -79,7 +78,7 @@ def transp_url(url):
     
     except Exception:
         a = "Website problem"
-    
+    print(a)
     return (a)
 
 #transp_url('https://www.vivaqua.be/fr')
