@@ -1,6 +1,8 @@
 import time
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
 
 #function that uses the VAT number to look up result in "banque centrale des bilans"
 #HTML signs for finding if the accounts is empty or full
@@ -9,7 +11,18 @@ from selenium import webdriver
 #url = "https://consult.cbso.nbb.be/consult-enterprise/0424920376"
 
 def cbb_result(url):
-    driver = webdriver.Chrome()
+
+    options = Options()
+    options.add_argument("start-maximized")
+    options.add_argument("disable-infobars")
+    options.add_argument("--disable-extensions")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--no-sandbox")
+    options.add_argument('--headless')
+    options.binary_location = "/usr/bin/chromium-browser"
+    driver = webdriver.Chrome(options=options)
+
+    #driver = webdriver.Chrome()
     #driver.maximize_window()
     driver.get(url)
 
