@@ -8,7 +8,7 @@ from selenium import webdriver
 #class="block-results__items ng-star-inserted" -- ACCOUNTS AVAILABLE
 
 def cbb_result(url):
-    driver = webdriver.Chrome(/'usr/bin/chromedriver')
+    driver = webdriver.Chrome('/usr/bin/chromedriver')
     #driver.maximize_window()
     driver.get(url)
 
