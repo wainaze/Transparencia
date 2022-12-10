@@ -82,7 +82,7 @@ def transp_url(url):
 
     except Exception:
         a = "Website problem"
-    
+    print(url + a)
     return (a)
 
 
