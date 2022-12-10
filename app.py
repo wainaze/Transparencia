@@ -53,7 +53,7 @@ pd.set_option('display.max_colwidth', None)
 df = df.rename(columns={'NOM ENREGISTRE A LA BANQUE NATIONALE	': 'NOM', 'cbb_link': 'Comptes disponibles', 'cbb_result': 'Dernière publication', 'transp_link': 'Page transparence'})
 
 
-df_short= df.drop(['NUM','WEBSITE', 'bce_link', 'Autorite', 'TYPE', 'MANDATS', 'UNITES'], axis=1)
+df_short= df.drop(['NUM', 'bce_link', 'Autorite', 'TYPE', 'MANDATS', 'UNITES'], axis=1)
 
 #print (df)
 
