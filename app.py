@@ -50,8 +50,10 @@ df['transp_link'] = df['WEBSITE'].map(transp_url)
 df = df.astype({'transp_link':'string'})
 pd.set_option('display.max_colwidth', None)
 #df = df.style.format({'cbb_link': make_clickable})
+df = df.rename(columns={'NOM ENREGISTRE A LA BANQUE NATIONALE	': 'NOM', 'cbb_link': 'Dernière publication', 'transp_link': 'Page transparence' })
 
-df_short= df.drop(['WEBSITE', 'bce_link', 'Autorite', 'TYPE', 'MANDATS', 'UNITES'], axis=1)
+
+df_short= df.drop(['NUM','WEBSITE', 'bce_link', 'Autorite', 'TYPE', 'MANDATS', 'UNITES'], axis=1)
 
 #print (df)
 
