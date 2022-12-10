@@ -5,7 +5,11 @@ import re
 import ssl
 import os
 import requests
+from urllib3.exceptions import InsecureRequestWarning
+from urllib3 import disable_warnings
 #function to parse a website from a url and find the links that contain the content about transparency.
+
+disable_warnings(InsecureRequestWarning)
 
 def transp_url(url):
     #hearders because some pages return 403 error
@@ -23,15 +27,15 @@ def transp_url(url):
 
     #make sure the URL is valid otherwise and if exception return website error
     try:
-        response = requests.get(url, timeout=10)
+        response = requests.get(url, timeout=10,verify=False)
         req = Request(url, headers=hdr)
         html_page = urlopen(req)
-        
+
         #find one href link URL that contains "transpar"
         #problem with casing doesn't recognise uper or lower.
         soup = BeautifulSoup(html_page, "lxml")
         link = soup.select_one("a[href*=transpar]")
-        
+
         #if there is a link url that contains transpar return the link direclty
         if link:
             #print("link found")
@@ -75,13 +79,14 @@ def transp_url(url):
                     #print("No Transparency page")            
                     a = "No Transparency page"
                     #print(a)
-    
+
     except Exception:
         a = "Website problem"
-    print(a)
+    
     return (a)
 
-#transp_url('https://www.vivaqua.be/fr')
+
+#print(transp_url('https://www.arp-gan.be/fr/'))
 
 #https://www.vivaqua.be/fr/
 #https://www.vivaqua.be/fr/
