@@ -55,8 +55,8 @@ df = df.rename(columns={'NOM ENREGISTRE A LA BANQUE NATIONALE	': 'NOM', 'cbb_lin
 
 df_short= df.drop(['NUM', 'bce_link', 'Autorite', 'TYPE', 'MANDATS', 'UNITES'], axis=1)
 
-count_no = df['transp_link'].value_counts(['No Transparency page'])
-count_problem = df['transp_link'].value_counts(['Website problem'])
+count_no = df['Page transparence'].value_counts(['No Transparency page'])
+count_problem = df['Page transparence'].value_counts(['Website problem'])
 
 print(count_no)
 print(count_problem)

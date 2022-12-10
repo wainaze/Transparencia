@@ -40,5 +40,5 @@ def cbb_result(url):
     else:
         a = "Company number error"
     
-    print(url + a)    
+    print(url +"-"+ a)    
     return a
